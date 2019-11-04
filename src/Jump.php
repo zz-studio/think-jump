@@ -62,9 +62,12 @@ trait Jump
         if ('html' == strtolower($type)) {
             $type = 'view';
         }
-        $response = Response::create($this->app->config->get('jump.dispatch_success_tmpl'), $type)->header($header);
-        if ($type == 'view') {
-            $response->assign($result);
+
+        if ('html' == strtolower($type)) {
+            $response = Response::create($this->app->config->get('jump.dispatch_success_tpl'), 'view')
+                ->assign($result)->header($header);
+        } else {
+            $response = Response::create($result, $type)->header($header);
         }
 
         throw new HttpResponseException($response);
@@ -96,11 +99,10 @@ trait Jump
         ];
         $type = $this->getResponseType();
         if ('html' == strtolower($type)) {
-            $type = 'view';
-        }
-        $response = Response::create($this->app->config->get('jump.dispatch_error_tmpl'), $type)->header($header);
-        if ($type == 'view') {
-            $response->assign($result);
+            $response = Response::create($this->app->config->get('jump.dispatch_error_tpl'), 'view')
+                ->assign($result)->header($header);
+        } else {
+            $response = Response::create($result, $type)->header($header);
         }
 
         throw new HttpResponseException($response);
