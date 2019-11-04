@@ -59,7 +59,7 @@ trait Jump
         $type = $this->getResponseType();
 
         if ('html' == strtolower($type)) {
-            $response = Response::create($this->app->config->get('jump.dispatch_success_tpl'), 'view')
+            $response = Response::create($this->app->config->get('jump.dispatch_success_tpl', $this->app->getRootPath().'/vendor/zzstudio/think-jump/src/tpl/dispatch_jump.tpl'), 'view')
                 ->assign($result)->header($header);
         } else {
             $response = Response::create($result, $type)->header($header);
@@ -94,7 +94,7 @@ trait Jump
         ];
         $type = $this->getResponseType();
         if ('html' == strtolower($type)) {
-            $response = Response::create($this->app->config->get('jump.dispatch_error_tpl'), 'view')
+            $response = Response::create($this->app->config->get('jump.dispatch_error_tpl', $this->app->getRootPath().'/vendor/zzstudio/think-jump/src/tpl/dispatch_jump.tpl'), 'view')
                 ->assign($result)->header($header);
         } else {
             $response = Response::create($result, $type)->header($header);
