@@ -60,10 +60,6 @@ trait Jump
 
         // 把跳转模板的渲染下沉，这样在 response_send 行为里通过getData()获得的数据是一致性的格式
         if ('html' == strtolower($type)) {
-            $type = 'view';
-        }
-
-        if ('html' == strtolower($type)) {
             $response = Response::create($this->app->config->get('jump.dispatch_success_tpl'), 'view')
                 ->assign($result)->header($header);
         } else {
@@ -156,7 +152,7 @@ trait Jump
     protected function getResponseType()
     {
         return $this->request->isJson() || $this->request->isAjax()
-            ? $this->app->config->get('jump.default_ajax_return')
-            : $this->app->config->get('jump.default_return_type');
+            ? $this->app->config->get('jump.default_ajax_return', 'json')
+            : $this->app->config->get('jump.default_return_type', 'html');
     }
 }
