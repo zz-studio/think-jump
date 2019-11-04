@@ -1,0 +1,25 @@
+{
+    "name": "zzstudio/think-jump",
+    "description": "The ThinkPHP6+ Jump Package",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "byron",
+            "email": "xiaobo.sun@qq.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "think\\": "src/"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+    "scripts" : {
+        "post-install-cmd": [
+            "php think jump:config"
+        ]
+    }
+}
