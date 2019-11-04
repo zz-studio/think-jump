@@ -57,11 +57,15 @@ trait Jump
             'wait' => $wait,
         ];
         $type = $this->getResponseType();
+
         // 把跳转模板的渲染下沉，这样在 response_send 行为里通过getData()获得的数据是一致性的格式
         if ('html' == strtolower($type)) {
             $type = 'view';
         }
-        $response = Response::create($this->app->config->get('jump.dispatch_success_tmpl'), $type)->assign($result)->header($header);
+        $response = Response::create($this->app->config->get('jump.dispatch_success_tmpl'), $type)->header($header);
+        if ($type == 'view') {
+            $response->assign($result);
+        }
 
         throw new HttpResponseException($response);
     }
@@ -94,7 +98,10 @@ trait Jump
         if ('html' == strtolower($type)) {
             $type = 'view';
         }
-        $response = Response::create($this->app->config->get('jump.dispatch_error_tmpl'), $type)->assign($result)->header($header);
+        $response = Response::create($this->app->config->get('jump.dispatch_error_tmpl'), $type)->header($header);
+        if ($type == 'view') {
+            $response->assign($result);
+        }
 
         throw new HttpResponseException($response);
     }
