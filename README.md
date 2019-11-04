@@ -136,7 +136,7 @@ abstract class BaseController
 
 这里继承BaseController后即可使用success、error、redirect、result方法
 
-```
+```php
 <?php
 
 namespace app\admin\controller;
