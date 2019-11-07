@@ -18,6 +18,8 @@
  * | Copyright (c) 2019 http://www.zzstudio.net All rights reserved.
  * +----------------------------------------------------------------------
  */
+declare(strict_types=1);
+
 return [
     // 默认输出类型
     'default_return_type'    => 'html',

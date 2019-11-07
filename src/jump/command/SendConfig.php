@@ -19,6 +19,7 @@
  * | Copyright (c) 2019 http://www.zzstudio.net All rights reserved.
  * +----------------------------------------------------------------------
  */
+declare(strict_types=1);
 
 namespace think\jump\command;
 

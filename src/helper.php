@@ -19,6 +19,7 @@
  * | Copyright (c) 2019 http://www.zzstudio.net All rights reserved.
  * +----------------------------------------------------------------------
  */
+declare(strict_types=1);
 
 \think\Console::starting(function (\think\Console $console) {
     $console->addCommands([

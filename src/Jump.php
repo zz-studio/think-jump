@@ -1,7 +1,7 @@
 <?php
 /**
  * +----------------------------------------------------------------------
- * | aoxuan [PhpStorm]
+ * | think-jump [基于 thinkphp6]
  * +----------------------------------------------------------------------
  *  .--,       .--,             | FILE: Jump.php
  * ( (  \.---./  ) )            | AUTHOR: byron
@@ -18,6 +18,7 @@
  * | Copyright (c) 2019 http://www.zzstudio.net All rights reserved.
  * +----------------------------------------------------------------------
  */
+declare(strict_types=1);
 
 namespace think;
 
@@ -81,7 +82,7 @@ trait Jump
     protected function error($msg = '', string $url = null, $data = '', int $wait = 3, array $header = [])
     {
         if (is_null($url)) {
-            $url = $this->request->isAjax() ? '' : 'javascript:history.back(-1);';
+            $url = $this->app->request->isAjax() ? '' : 'javascript:history.back(-1);';
         } elseif ($url) {
             $url = (strpos($url, '://') || 0 === strpos($url, '/')) ? $url : $this->app->route->buildUrl($url);
         }
@@ -150,7 +151,7 @@ trait Jump
      */
     protected function getResponseType()
     {
-        return $this->request->isJson() || $this->request->isAjax()
+        return $this->app->request->isJson() || $this->app->request->isAjax()
             ? $this->app->config->get('jump.default_ajax_return', 'json')
             : $this->app->config->get('jump.default_return_type', 'html');
     }
