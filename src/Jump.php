@@ -122,7 +122,7 @@ trait Jump
             'time' => time(),
             'data' => $data,
         ];
-        $type = $type ?: $this->getResponseType();
+        $type = empty($type) ? $this->app->config->get('jump.default_ajax_return', 'json') : $this->getResponseType();
         $response = Response::create($result, $type)->header($header);
 
         throw new HttpResponseException($response);
