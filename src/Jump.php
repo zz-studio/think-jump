@@ -51,7 +51,7 @@ trait Jump
             $url = (strpos($url, '://') || 0 === strpos($url, '/')) ? $url : $this->app->route->buildUrl($url);
         }
         $result = [
-            'code' => 0,
+            'code' => $this->app->config->get('jump.default_success_code', 0),
             'msg' => $msg,
             'data' => $data,
             'url' => $url,
@@ -87,7 +87,7 @@ trait Jump
             $url = (strpos($url, '://') || 0 === strpos($url, '/')) ? $url : $this->app->route->buildUrl($url);
         }
         $result = [
-            'code' => 1,
+            'code' => $this->app->config->get('jump.default_error_code', 1),
             'msg' => $msg,
             'data' => $data,
             'url' => $url,
