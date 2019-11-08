@@ -19,7 +19,7 @@ composer require zzstudio/think-jump
 php think jump:config 
 ```
 
-快速生成配置文件
+可快速生成配置文件
 
 ### 公共配置
 ```
