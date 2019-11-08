@@ -10,6 +10,17 @@ Use composer to manage your dependencies and download think-jump:
 composer require zzstudio/think-jump
 ```
 
+### 生成配置
+
+系统安装后会自动在 config 目录中生成 jump.php 的配置文件，
+如果系统未生成可在命令行执行
+
+```php
+php think jump:config 
+```
+
+快速生成配置文件
+
 Example
 -------
 在所需控制器内引用该扩展即可：
