@@ -21,9 +21,11 @@
             "src/helper.php"
         ]
     },
-    "scripts" : {
-        "post-install-cmd": [
-            "php think jump:config"
-        ]
+    "extra": {
+        "think": {
+            "config":{
+                "jump": "src/config.php"
+            }
+        }
     }
 }
